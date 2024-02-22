@@ -43,13 +43,6 @@ public class LinkedList {
 
     // Method to find the index of a specific Song
     public int indexOf(Song input){
-        if (input.getClass().equals(Song.class)){
-            throw new InputMismatchException("Passed value should be a song.");
-        }
-        if (input.equals(null)){
-            throw new NullPointerException("Song needs to have a value.");
-        }
-
         Song current = head;
         int index = 0;
 
@@ -65,8 +58,13 @@ public class LinkedList {
         return -1;
     }
 
+    // Method to add a Song to the end of the list
     public void add(Song passed){
-        if (passed.getClass().equals(Song.class))
-        this.tail.setNext(passed);
+        if (tail == null){
+            head = passed;
+            tail = passed;
+        } else {
+            this.tail.setNext(passed);
+        }
     }
 }
