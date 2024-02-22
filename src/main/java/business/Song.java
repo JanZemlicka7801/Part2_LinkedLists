@@ -39,6 +39,7 @@ public class Song {
         this.title = title;
     }
 
+    // Equals method based on artist and title
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,11 +47,13 @@ public class Song {
         return Objects.equals(getArtist(), song.getArtist()) && Objects.equals(getTitle(), song.getTitle());
     }
 
+    // HashCode method based on artist and title
     @Override
     public int hashCode() {
         return Objects.hash(getArtist(), getTitle());
     }
 
+    // ToString method for well-formatted output
     @Override
     public String toString() {
         return "Song{" +
