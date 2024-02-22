@@ -38,4 +38,25 @@ public class LinkedList {
 
         return current;
     }
+
+    // Method to find the index of a specific Song
+    public int indexOf(Song input){
+        if (input.getClass().equals(Song.class)){
+            throw new NullPointerException("Passed value should be a song.");
+        }
+
+        Song current = head;
+        int index = 0;
+
+        while(current != null){
+            if(input.equals(current)) {
+                return index;
+            }
+
+            current = current.getNext();
+            index++;
+        }
+
+        return -1;
+    }
 }
