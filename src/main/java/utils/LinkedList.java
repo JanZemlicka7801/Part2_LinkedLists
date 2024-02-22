@@ -3,6 +3,8 @@ package utils;
 import business.Song;
 import org.w3c.dom.Node;
 
+import java.util.InputMismatchException;
+
 /**
  *
  * @author michelle
@@ -42,7 +44,10 @@ public class LinkedList {
     // Method to find the index of a specific Song
     public int indexOf(Song input){
         if (input.getClass().equals(Song.class)){
-            throw new NullPointerException("Passed value should be a song.");
+            throw new InputMismatchException("Passed value should be a song.");
+        }
+        if (input.equals(null)){
+            throw new NullPointerException("Song needs to have a value.");
         }
 
         Song current = head;
@@ -58,5 +63,10 @@ public class LinkedList {
         }
 
         return -1;
+    }
+
+    public void add(Song passed){
+        if (passed.getClass().equals(Song.class))
+        this.tail.setNext(passed);
     }
 }
