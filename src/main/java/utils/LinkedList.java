@@ -60,7 +60,7 @@ public class LinkedList {
 
     // Method to add a Song to the end of the list
     public void add(Song passed){
-        if (tail == null){
+        if (tail() == null){
             head = passed;
             tail = passed;
         } else {
@@ -73,5 +73,13 @@ public class LinkedList {
     // Method to check if the list is empty
     public boolean isEmpty(){
         return this.size==0;
+    }
+
+    // Method to get the last element in the list
+    public Song tail(){
+        if (isEmpty()) {
+            throw new IllegalStateException("List is empty.");
+        }
+        return this.tail;
     }
 }
