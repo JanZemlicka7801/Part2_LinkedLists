@@ -9,6 +9,7 @@ import java.util.Objects;
 public class Song {
     private String artist;
     private String title;
+    private Song next;
 
     // Default constructor
     public Song() {
@@ -37,6 +38,14 @@ public class Song {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Song getNext() {
+        return next;
+    }
+
+    public void setNext(Song next) {
+        this.next = next;
     }
 
     // Equals method based on artist and title
