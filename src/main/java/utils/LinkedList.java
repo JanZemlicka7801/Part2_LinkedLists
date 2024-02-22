@@ -65,6 +65,13 @@ public class LinkedList {
             tail = passed;
         } else {
             this.tail.setNext(passed);
+            tail = passed;
         }
+        size++;
+    }
+
+    // Method to check if the list is empty
+    public boolean isEmpty(){
+        return this.size==0;
     }
 }
