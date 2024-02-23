@@ -64,10 +64,15 @@ public class LinkedList {
 
     // Method to add a Song to the end of the list
     public void add(Song passed){
-        if (tail() == null){
+        if (isEmpty()){
             head = passed;
             tail = passed;
         } else {
+
+            if (check(passed)){
+                throw new IllegalArgumentException("All songs in playlist needs to have same Artist.");
+            }
+
             this.tail.setNext(passed);
             tail = passed;
         }
@@ -116,6 +121,10 @@ public class LinkedList {
                 tail = current;
             }
         }
+    }
 
+    //this method checks if LinkedList contains only one artist
+    public boolean check(Song passed){
+        return (!passed.getArtist().equalsIgnoreCase(this.head.getArtist()));
     }
 }
