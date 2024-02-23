@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 
 /**
  *
- * @author michelle
+ * @author JanZemlicka7801
  */
 public class LinkedList {
     private Song head;
@@ -30,6 +30,10 @@ public class LinkedList {
     public Song get(int pos){
         if(pos < 0 || pos >= size){
             throw new IndexOutOfBoundsException("Entered position is out of bound.");
+        }
+
+        if (head == null) {
+            throw new IllegalStateException("List is empty.");
         }
 
         Song current = head;
@@ -81,5 +85,37 @@ public class LinkedList {
             throw new IllegalStateException("List is empty.");
         }
         return this.tail;
+    }
+
+    public void remove(Song toRemove){
+        if (this.isEmpty()){
+            throw new IllegalStateException("List is empty.");
+        }
+
+        if (toRemove.equals(head)){
+            this.head = this.head.getNext();
+            size--;
+            // If list becomes empty tail needs to be also set to null
+            if (head == null){
+                this.tail = null;
+            }
+        }
+
+        Song current = head;
+        //loop through the list until it finds match or reach the end
+        while (current.getNext() != null && !current.getNext().equals(toRemove)){
+            current = current.getNext();
+        }
+
+        //check if the element to be removed is either in the middle or at the end
+        if (current.getNext() != null){
+            current.setNext(current.getNext().getNext());
+            size--;
+            if (current.getNext() == null){
+                //if the element to be removed was at the end tail needs to be update
+                tail = current;
+            }
+        }
+
     }
 }
