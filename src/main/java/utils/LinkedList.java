@@ -104,21 +104,22 @@ public class LinkedList {
             if (head == null){
                 this.tail = null;
             }
-        }
+        } else {
 
-        Song current = head;
-        //loop through the list until it finds match or reach the end
-        while (current.getNext() != null && !current.getNext().equals(toRemove)){
-            current = current.getNext();
-        }
+            Song current = head;
+            //loop through the list until it finds match or reach the end
+            while (current.getNext() != null && !current.getNext().equals(toRemove)) {
+                current = current.getNext();
+            }
 
-        //check if the element to be removed is either in the middle or at the end
-        if (current.getNext() != null){
-            current.setNext(current.getNext().getNext());
-            size--;
-            if (current.getNext() == null){
-                //if the element to be removed was at the end tail needs to be update
-                tail = current;
+            //check if the element to be removed is either in the middle or at the end
+            if (current.getNext() != null) {
+                current.setNext(current.getNext().getNext());
+                size--;
+                if (current.getNext() == null) {
+                    //if the element to be removed was at the end tail needs to be update
+                    tail = current;
+                }
             }
         }
     }
