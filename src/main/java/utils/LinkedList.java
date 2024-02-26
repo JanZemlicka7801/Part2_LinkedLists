@@ -4,6 +4,7 @@ import business.Song;
 import org.w3c.dom.Node;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 
 /**
  *
@@ -68,11 +69,6 @@ public class LinkedList {
             head = passed;
             tail = passed;
         } else {
-
-            if (check(passed)){
-                throw new IllegalArgumentException("All songs in playlist needs to have same Artist.");
-            }
-
             this.tail.setNext(passed);
             tail = passed;
         }
@@ -125,7 +121,21 @@ public class LinkedList {
     }
 
     //this method checks if LinkedList contains only one artist
-    public boolean check(Song passed){
-        return (!passed.getArtist().equalsIgnoreCase(this.head.getArtist()));
+    public boolean check(){
+        if (isEmpty()){
+            throw new IllegalArgumentException("List is empty");
+        }
+
+        Song current = head;
+
+        while (current!=null){
+            if (!Objects.equals(current.getArtist(), head.getArtist())){
+                return false;
+            } else {
+                current = current.getNext();
+            }
+        }
+
+        return true;
     }
 }
