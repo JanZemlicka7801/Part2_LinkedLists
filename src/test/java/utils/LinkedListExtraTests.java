@@ -1,9 +1,9 @@
 package utils;
 
 import business.Song;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -63,5 +63,38 @@ public class LinkedListExtraTests {
         assertThrows(IllegalStateException.class, () -> {
             linkedList.remove(song);
         });
+    }
+
+    @Test
+    public void testCheck_SingleArtist(){
+        Song song1 = new Song("Artist1", "Title1");
+        Song song2 = new Song("Artist1", "Title2");
+        Song song3 = new Song("Artist1", "Title3");
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.add(song1);
+        linkedList.add(song2);
+        linkedList.add(song3);
+
+        assertTrue(linkedList.check());
+    }
+
+    @Test
+    public void testCheck_MixedArtist(){
+        Song song1 = new Song("Artist1", "Title1");
+        Song song2 = new Song("Artist2", "Title1");
+        LinkedList linkedList = new LinkedList();
+
+        linkedList.add(song2);
+        linkedList.add(song1);
+
+        assertFalse(linkedList.check());
+    }
+
+    @Test
+    public void testCheck_EmptyList(){
+        LinkedList linkedList = new LinkedList();
+
+        assertThrows(IllegalArgumentException.class, linkedList::check);
     }
 }
