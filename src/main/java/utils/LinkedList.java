@@ -203,7 +203,7 @@ public class LinkedList {
 
         Song current = head;
 
-        while (current!=null){
+        while (current.getNext()!=null){
             if (!(current.getArtist().equalsIgnoreCase(current.getNext().getArtist()))){
                 return false;
             } else {
