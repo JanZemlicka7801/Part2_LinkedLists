@@ -69,9 +69,13 @@ public class LinkedList {
      *
      * @param input A song to find in the LinkedList.
      * @return The position of a passed song.
+     * @throws IllegalArgumentException If passed song is null.
      */
     // Method to find the index of a specific Song
     public int indexOf(Song input){
+        if (input == null) {
+            throw new IllegalArgumentException("Cannot get index of a null Song.");
+        }
         Song current = head;
         int index = 0;
 
@@ -91,9 +95,13 @@ public class LinkedList {
      * Adds a Song to a LinkedList at the end.
      *
      * @param passed A song that needs to be added.
+     * @throws IllegalArgumentException If passed Song is null.
      */
     // Method to add a Song to the end of the list
     public void add(Song passed){
+        if (passed == null) {
+            throw new IllegalArgumentException("Cannot add a null Song.");
+        }
         if (isEmpty()){
             head = passed;
             tail = passed;
@@ -133,13 +141,19 @@ public class LinkedList {
      *
      * @param toRemove A song that needs to be removed.
      * @throws IllegalStateException If the LinkedList is empty.
+     * @throws IllegalArgumentException If the passed song is null.
      */
-    public void remove(Song toRemove){
+    public Song remove(Song toRemove){
+        if (toRemove == null) {
+            throw new IllegalArgumentException("Cannot remove a null Song.");
+        }
+        Song removed = null;
         if (this.isEmpty()){
             throw new IllegalStateException("List is empty.");
         }
 
         if (toRemove.equals(head)){
+            removed = head;
             this.head = this.head.getNext();
             size--;
             // If list becomes empty tail needs to be also set to null
@@ -156,6 +170,7 @@ public class LinkedList {
 
             //check if the element to be removed is either in the middle or at the end
             if (current.getNext() != null) {
+                removed = current.getNext();
                 current.setNext(current.getNext().getNext());
                 size--;
                 if (current.getNext() == null) {
@@ -164,6 +179,7 @@ public class LinkedList {
                 }
             }
         }
+        return removed;
     }
 
     /**
