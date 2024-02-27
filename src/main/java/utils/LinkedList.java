@@ -143,7 +143,7 @@ public class LinkedList {
             this.head = this.head.getNext();
             size--;
             // If list becomes empty tail needs to be also set to null
-            if (head == null){
+            if (this.isEmpty()){
                 this.tail = null;
             }
         } else {
