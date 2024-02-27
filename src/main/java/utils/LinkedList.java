@@ -199,7 +199,7 @@ public class LinkedList {
         Song current = head;
 
         while (current!=null){
-            if (!Objects.equals(current.getArtist(), head.getArtist())){
+            if (!(current.getArtist().equalsIgnoreCase(current.getNext().getArtist()))){
                 return false;
             } else {
                 current = current.getNext();
