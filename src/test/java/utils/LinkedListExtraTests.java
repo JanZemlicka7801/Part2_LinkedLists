@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * should also be comparing size and what has been removed
  * @author michelle
  */
 public class LinkedListExtraTests {

@@ -143,6 +143,8 @@ public class LinkedList {
      * @throws IllegalStateException If the LinkedList is empty.
      * @throws IllegalArgumentException If the passed song is null.
      */
+
+    //should be a boolean instead of Song
     public Song remove(Song toRemove){
         if (toRemove == null) {
             throw new IllegalArgumentException("Cannot remove a null Song.");
