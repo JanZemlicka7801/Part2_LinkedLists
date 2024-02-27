@@ -7,6 +7,8 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 /**
+ * The LinkedList class represents a singly linked list of songs.
+ * Each Node represents a song in playlist.
  *
  * @author JanZemlicka7801
  */
@@ -15,6 +17,9 @@ public class LinkedList {
     private Song tail;
     private int size;
 
+    /**
+     * Constructor of an empty LinkedList.
+     */
     // No argument constructor
     public LinkedList() {
         this.head = null;
@@ -22,11 +27,24 @@ public class LinkedList {
         this.size = 0;
     }
 
+    /**
+     * Returns the number of songs in the LinkedList (size).
+     *
+     * @return The size of the LinkedList.
+     */
     // Size method to return number of songs stored in the list
     public int size(){
         return this.size;
     }
 
+    /**
+     * Retrieves a position of a specified song in the LinkedList.
+     *
+     * @param pos The position of the song.
+     * @return The song on specified positions passed as a parameter.
+     * @throws IndexOutOfBoundsException If the position is outside the bonds.
+     * @throws IllegalStateException If the LinkedList is empty.
+     */
     // Get method to get data at a specific position
     public Song get(int pos){
         if(pos < 0 || pos >= size){
@@ -46,6 +64,12 @@ public class LinkedList {
         return current;
     }
 
+    /**
+     * Retries a first occurred position in LinkedList of passed Song.
+     *
+     * @param input A song to find in the LinkedList.
+     * @return The position of a passed song.
+     */
     // Method to find the index of a specific Song
     public int indexOf(Song input){
         Song current = head;
@@ -63,6 +87,11 @@ public class LinkedList {
         return -1;
     }
 
+    /**
+     * Adds a Song to a LinkedList at the end.
+     *
+     * @param passed A song that needs to be added.
+     */
     // Method to add a Song to the end of the list
     public void add(Song passed){
         if (isEmpty()){
@@ -75,11 +104,22 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Checks if the LinkedList is empty.
+     *
+     * @return True if its empty and false otherwise.
+     */
     // Method to check if the list is empty
     public boolean isEmpty(){
         return this.size==0;
     }
 
+    /**
+     * Retrieves the last element from LinkedList (tail).
+     *
+     * @return The last song in the LinkedList.
+     * @throws IllegalStateException If the LinkedList is empty.
+     */
     // Method to get the last element in the list
     public Song tail(){
         if (isEmpty()) {
@@ -88,6 +128,12 @@ public class LinkedList {
         return this.tail;
     }
 
+    /**
+     * Removes a supplied song from the LinkedList.
+     *
+     * @param toRemove A song that needs to be removed.
+     * @throws IllegalStateException If the LinkedList is empty.
+     */
     public void remove(Song toRemove){
         if (this.isEmpty()){
             throw new IllegalStateException("List is empty.");
@@ -120,6 +166,12 @@ public class LinkedList {
         }
     }
 
+    /**
+     * Checks if the LinkedList contains song from only one artist or from many.
+     *
+     * @return True if the LinkedList is only having one artist.
+     * @throws IllegalArgumentException If the LinkedList is empty.
+     */
     //this method checks if LinkedList contains only one artist
     public boolean check(){
         if (isEmpty()){
