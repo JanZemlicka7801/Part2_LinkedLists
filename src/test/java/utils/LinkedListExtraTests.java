@@ -193,4 +193,46 @@ public class LinkedListExtraTests {
 
         assertTrue(linkedList.check());
     }
+
+    /**
+     * To test adding a song to empty array.
+     */
+    @Test
+    public void testAdd_Song(){
+        LinkedList linkedList = new LinkedList();
+        Song song1 = new Song("Artist1", "Title1");
+
+        linkedList.add(song1);
+
+        assertEquals(song1,linkedList.tail());
+        assertEquals(1, linkedList.size());
+    }
+
+    /**
+     * To test adding a null to empty array.
+     */
+    @Test
+    public void testAdd_Null(){
+        LinkedList linkedList = new LinkedList();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            linkedList.add(null);
+        });
+    }
+
+    /**
+     * To test adding songs to empty array.
+     */
+    @Test
+    public void testAdd_More(){
+        LinkedList linkedList = new LinkedList();
+        Song song1 = new Song("Artist1", "Title1");
+        Song song2 = new Song("Artist2", "Title2");
+
+        linkedList.add(song1);
+        linkedList.add(song2);
+
+        assertEquals(song2,linkedList.tail());
+        assertEquals(2, linkedList.size());
+    }
 }
