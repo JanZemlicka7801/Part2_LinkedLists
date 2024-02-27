@@ -145,7 +145,7 @@ public class LinkedList {
      */
 
     //should be a boolean instead of Song
-    public Song remove(Song toRemove){
+    public boolean remove(Song toRemove){
         if (toRemove == null) {
             throw new IllegalArgumentException("Cannot remove a null Song.");
         }
@@ -162,6 +162,8 @@ public class LinkedList {
             if (this.isEmpty()){
                 this.tail = null;
             }
+            // Succesfully removed
+            return true;
         } else {
 
             Song current = head;
@@ -179,9 +181,12 @@ public class LinkedList {
                     //if the element to be removed was at the end tail needs to be update
                     tail = current;
                 }
+                // Succesfully removed
+                return true;
             }
         }
-        return removed;
+        // Was not removed
+        return false;
     }
 
     /**
