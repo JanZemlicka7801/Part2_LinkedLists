@@ -14,17 +14,22 @@ public class LinkedListExtraTests {
     public LinkedListExtraTests() {
     }
 
+    /**
+     * Test to remove first song in the list.
+     */
     @Test
     public void testRemove_SingleSong(){
         Song song = new Song("Jan", "Title1");
         LinkedList linkedList = new LinkedList();
 
         linkedList.add(song);
-        linkedList.remove(song);
 
-        assertEquals(0, linkedList.size());
+        assertEquals(song, linkedList.remove(song));
     }
 
+    /**
+     * Test to remove middle song from the list.
+     */
     @Test
     public void testRemove_MiddleSong(){
         Song song1 = new Song("Artist1", "Title1");
@@ -36,9 +41,7 @@ public class LinkedListExtraTests {
         linkedList.add(song2);
         linkedList.add(song3);
 
-        linkedList.remove(song2);
-
-        assertEquals(2, linkedList.size());
+        assertEquals(song2, linkedList.remove(song2));
     }
 
     @Test
@@ -50,9 +53,7 @@ public class LinkedListExtraTests {
         linkedList.add(song1);
         linkedList.add(song2);
 
-        linkedList.remove(song2);
-
-        assertEquals(1, linkedList.size());
+        assertEquals(song2, linkedList.remove(song2));
     }
 
     @Test
@@ -62,6 +63,16 @@ public class LinkedListExtraTests {
 
         assertThrows(IllegalStateException.class, () -> {
             linkedList.remove(song);
+        });
+    }
+
+    @Test
+    public void testRemove_NullFromList(){
+        Song song = new Song("Artist1", "Title1");
+        LinkedList linkedList = new LinkedList();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            linkedList.remove(null);
         });
     }
 
