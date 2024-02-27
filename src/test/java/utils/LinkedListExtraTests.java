@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * should also be comparing size and what has been removed
  * @author michelle
  */
 public class LinkedListExtraTests {
@@ -91,6 +90,9 @@ public class LinkedListExtraTests {
         });
     }
 
+    /**
+     * Test to remove non-existing song from the LinkedList.
+     */
     @Test
     public void testRemove_SomeSong(){
         Song song1 = new Song("Artist1", "Title1");
@@ -105,6 +107,9 @@ public class LinkedListExtraTests {
         assertFalse(linkedList.remove(new Song("Artist2", "Title4")));
     }
 
+    /**
+     * Test to remove null value from the LinkedList.
+     */
     @Test
     public void testRemove_NullFromList(){
         Song song = new Song("Artist1", "Title1");
@@ -115,12 +120,38 @@ public class LinkedListExtraTests {
         });
     }
 
+    /**
+     * To check an empty LinkedList.
+     */
     @Test
-    public void testCheck_SingleArtist(){
+    public void testCheck_Empty(){
+        LinkedList linkedList = new LinkedList();
+
+        assertFalse(linkedList.check());
+    }
+
+    /**
+     * To check LinkedList with one element.
+     */
+    @Test
+    public void testCheck_One(){
+        LinkedList linkedList = new LinkedList();
+        Song song1 = new Song("Artist1", "Title1");
+
+        linkedList.add(song1);
+
+        assertTrue(linkedList.check());
+    }
+
+    /**
+     * To check LinkedList with many songs having same artist.
+     */
+    @Test
+    public void testCheck_Same(){
+        LinkedList linkedList = new LinkedList();
         Song song1 = new Song("Artist1", "Title1");
         Song song2 = new Song("Artist1", "Title2");
         Song song3 = new Song("Artist1", "Title3");
-        LinkedList linkedList = new LinkedList();
 
         linkedList.add(song1);
         linkedList.add(song2);
@@ -129,22 +160,37 @@ public class LinkedListExtraTests {
         assertTrue(linkedList.check());
     }
 
+    /**
+     * To check LinkedList of different artists.
+     */
     @Test
-    public void testCheck_MixedArtist(){
-        Song song1 = new Song("Artist1", "Title1");
-        Song song2 = new Song("Artist2", "Title1");
+    public void testCheck_Diff(){
         LinkedList linkedList = new LinkedList();
+        Song song1 = new Song("Artist1", "Title1");
+        Song song2 = new Song("Artist2", "Title2");
+        Song song3 = new Song("Artist1", "Title3");
 
-        linkedList.add(song2);
         linkedList.add(song1);
+        linkedList.add(song2);
+        linkedList.add(song3);
 
         assertFalse(linkedList.check());
     }
 
+    /**
+     * To check LinkedList with case-insensitive matching artists.
+     */
     @Test
-    public void testCheck_EmptyList(){
+    public void testCheck_Case(){
         LinkedList linkedList = new LinkedList();
+        Song song1 = new Song("Artist1", "Title1");
+        Song song2 = new Song("artist1", "Title2");
+        Song song3 = new Song("Artist1", "Title3");
 
-        assertThrows(IllegalArgumentException.class, linkedList::check);
+        linkedList.add(song1);
+        linkedList.add(song2);
+        linkedList.add(song3);
+
+        assertTrue(linkedList.check());
     }
 }

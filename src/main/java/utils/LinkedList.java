@@ -198,7 +198,7 @@ public class LinkedList {
     //this method checks if LinkedList contains only one artist
     public boolean check(){
         if (isEmpty()){
-            throw new IllegalArgumentException("List is empty");
+            return false;
         }
 
         Song current = head;
