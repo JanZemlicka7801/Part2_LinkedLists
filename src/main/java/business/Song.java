@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  *
- * @author michelle
+ * @author JanZemlicka7801
  */
 public class Song {
     private String artist;
